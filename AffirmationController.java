@@ -9,14 +9,14 @@ import java.util.List;
 import java.util.Random;
 
 @RestController
-@CrossOrigin(origins = "*") // Allow frontend to access
+@CrossOrigin(origins = "*") 
 @RequestMapping("/api/affirmations")
 public class AffirmationController {
 
     @Autowired
     private AffirmationRepository repository;
 
-    // Get a random affirmation
+    
     @GetMapping("/random")
     public Affirmation getRandomAffirmation() {
         List<Affirmation> all = repository.findAll();
@@ -24,7 +24,7 @@ public class AffirmationController {
         return all.get(new Random().nextInt(all.size()));
     }
 
-    // Like an affirmation
+    
     @PostMapping("/{id}/like")
     public String likeAffirmation(@PathVariable Long id) {
         Affirmation affirmation = repository.findById(id).orElse(null);
@@ -36,15 +36,16 @@ public class AffirmationController {
         return "Affirmation not found.";
     }
 
-    // Get liked affirmations
+    
     @GetMapping("/favorites")
     public List<Affirmation> getFavorites() {
         return repository.findByLikedTrue();
     }
 
-    // Add a new affirmation manually
+    
     @PostMapping("/add")
     public Affirmation addAffirmation(@RequestBody Affirmation affirmation) {
         return repository.save(affirmation);
     }
 }
+
