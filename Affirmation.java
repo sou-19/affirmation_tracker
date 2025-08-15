@@ -13,7 +13,7 @@ public class Affirmation {
     private String quote;
     private boolean liked;
 
-    // Constructors
+    
     public Affirmation() {}
 
     public Affirmation(String quote) {
@@ -21,7 +21,7 @@ public class Affirmation {
         this.liked = false;
     }
 
-    // Getters and Setters
+    
     public Long getId() { return id; }
 
     public String getQuote() { return quote; }
@@ -30,3 +30,4 @@ public class Affirmation {
     public boolean isLiked() { return liked; }
     public void setLiked(boolean liked) { this.liked = liked; }
 }
+
